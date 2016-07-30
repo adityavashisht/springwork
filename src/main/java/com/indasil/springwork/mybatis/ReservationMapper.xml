@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.indasil.springwork.mybatis.ReservationMapper">
+
+
+	<insert id="reserve" keyColumn="id" keyProperty="reservation.id">
+
+		<selectKey keyProperty="reservation.id" resultType="long"
+			order="BEFORE">
+			select nextval ('reservation_seq')
+		</selectKey>
+
+		INSERT INTO reservation (id, name) values (#{reservation.id},#{reservation.name})
+
+	</insert>
+
+
+</mapper>
