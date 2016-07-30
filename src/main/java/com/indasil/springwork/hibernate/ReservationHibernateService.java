@@ -1,5 +1,7 @@
 package com.indasil.springwork.hibernate;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,7 @@ import com.indasil.springwork.domain.Reservation;
 
 @Service
 @Transactional
-public class ReservationHibernateService {
+public class ReservationHibernateService  {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -25,6 +27,11 @@ public class ReservationHibernateService {
 	
 	public void update(Reservation r) {
 		sessionFactory.getCurrentSession().update(r);
+	}
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("Hibernate service ready!");
 	}
 
 }
