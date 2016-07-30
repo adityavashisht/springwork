@@ -15,7 +15,8 @@ public class ReservationHibernateService  {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
+	@Transactional
 	public void reserve(Reservation r) {
 		
 		sessionFactory.getCurrentSession().save(r);
